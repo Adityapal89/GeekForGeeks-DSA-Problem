@@ -10,10 +10,12 @@ class Node {
 
 class Solution {
     public ArrayList<Integer> printList(Node head) {
+        // code here
         ArrayList<Integer> st = new ArrayList<>();
-        while( head != null){
-            st.add(head.data);
-            head = head.next;
+        Node temp = head;
+        while(temp != null){
+            st.add(temp.data);
+            temp = temp.next;
         }
         return st;
     }
