@@ -1,30 +1,29 @@
 class Solution {
     boolean twoSum(int arr[], int target) {
         // code here
-        int n = arr.length;
-
-        // If array has less than 2 elements, no pair is possible
-        if (n < 2) return false;
-
-        // Sort the array
+        
+        int i = 0;
+        int j = arr.length-1;
         Arrays.sort(arr);
-
-        int left = 0;
-        int right = n - 1;
-
-        // Two-pointer approach
-        while (left < right) {
-            int sum = arr[left] + arr[right];
-
-            if (sum == target) {
-                return true;
-            } else if (sum < target) {
-                left++;
-            } else {
-                right--;
+        while(i < j){
+            int sum = arr[i] + arr[j];
+            if(sum == target) return true;
+            else if(sum < target) i++;
+            else{
+                j--;
             }
         }
-        // No pair found
         return false;
+        
+        // int sum = 0;
+        // for(int i=0; i<arr.length; i++){
+        //     for(int j = 0; j<arr.length; j++){
+        //         sum = arr[i] + arr[j];
+        //         if(sum == target){
+        //             return true;
+        //         }
+        //     }
+        // }
+        // return false;
     }
 }
