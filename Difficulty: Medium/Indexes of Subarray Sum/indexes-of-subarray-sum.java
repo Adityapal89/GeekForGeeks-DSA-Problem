@@ -1,23 +1,26 @@
-
 class Solution {
     static ArrayList<Integer> subarraySum(int[] arr, int target) {
-        // code here
-        ArrayList<Integer> res = new ArrayList<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        int left = 0;
         int sum = 0;
-        int st = 0;
-        for(int i = 0; i < arr.length; i++){
-            sum = sum + arr[i];
-            while(sum > target && st <= i){
-                sum -= arr[st];
-                st++;
+
+        for (int right = 0; right < arr.length; right++) {
+            sum += arr[right];
+
+            while (sum > target && left <= right) {
+                sum -= arr[left];
+                left++;
             }
-            if(sum == target){
-                res.add(st+1);
-                res.add(i+1);
-                return res;
+
+            if (sum == target) {
+                ans.add(left + 1);
+                ans.add(right + 1);
+                return ans;
             }
         }
-        res.add(-1);
-        return res;
+
+        ans.add(-1);
+        return ans;
     }
 }
